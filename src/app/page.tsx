@@ -1,4 +1,4 @@
-import { ItemCard } from "@/components/ItemCard/ItemCard";
+import { MenuItemCardList } from "@/components/MenuItemCardList/MenuItemCardList";
 
 const items = {
   products: [
@@ -61,12 +61,8 @@ const items = {
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-4">
-      {items.products.map((item) => (
-        <span className="p-6" key={item.slug}>
-          <ItemCard imageUrl={item.image} title={item.name} description={item.description} price={item.price} />
-        </span>
-      ))}
+    <div id="menu-items">
+      <MenuItemCardList items={items.products} />
     </div>
   );
 }
