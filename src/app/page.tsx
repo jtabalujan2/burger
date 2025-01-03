@@ -1,101 +1,68 @@
-import Image from "next/image";
+import { MenuItemCardList } from "@/components/MenuItemCardList/MenuItemCardList";
+
+const items = {
+  products: [
+    {
+      id: "1",
+      name: "Burger A",
+      price: 499,
+      image: "https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6",
+      description: "A classic beef patty topped with lettuce, tomato, and our special sauce, served in a sesame seed bun.",
+      calorie: 760,
+      slug: "burger-a",
+    },
+    {
+      id: "2",
+      name: "Black Burger",
+      price: 599,
+      image: "https://images.unsplash.com/photo-1582196016295-f8c8bd4b3a99",
+      description: "Featuring a unique black bun, this burger comes with a juicy Angus beef patty, melted cheddar, and caramelized onions.",
+      calorie: 640,
+      slug: "black-burger",
+    },
+    {
+      id: "3",
+      name: "Fries with Ketchup",
+      price: 699,
+      image: "https://images.unsplash.com/photo-1550259114-ad7188f0a967",
+      description: "Crispy golden fries served with a side of our signature tangy ketchup.",
+      calorie: 920,
+      slug: "fries",
+    },
+    {
+      id: "4",
+      name: "Bacon & Egg",
+      price: 799,
+      image: "https://images.unsplash.com/photo-1601894087104-0c18bc34dbd6",
+      description: "A hearty burger featuring a fried egg, crispy bacon, and melted cheese, all on a toasted brioche bun.",
+      calorie: 920,
+      slug: "bacon-egg",
+    },
+    {
+      id: "5",
+      name: "Mushroom",
+      price: 799,
+      image: "https://images.unsplash.com/photo-1549611016-3a70d82b5040",
+      description: "Loaded with sautéed mushrooms and Swiss cheese, this burger is a mushroom lover's delight.",
+      calorie: 820,
+      slug: "mushroom-burger",
+    },
+    {
+      id: "6",
+      name: "Chicken Sandwich",
+      price: 799,
+      image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086",
+      description: "A juicy grilled chicken breast topped with lettuce, tomato, and mayo, served on a whole wheat bun.",
+      calorie: 1020,
+      slug: "chicken-burger",
+    },
+  ],
+};
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div id="menu-items">
+      <MenuItemCardList items={items.products} />
     </div>
   );
 }
