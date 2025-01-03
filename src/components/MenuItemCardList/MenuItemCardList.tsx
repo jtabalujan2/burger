@@ -16,13 +16,9 @@ interface MenuItemCardListProps {
 }
 
 export const MenuItemCardList = ({ items }: MenuItemCardListProps) => {
-  return (
-    <section className="grid grid-cols-4">
-      {items.map((item) => (
-        <span className="p-6" key={item.slug}>
-          <MenuItemCard imageUrl={item.image} title={item.name} description={item.description} price={item.price} />
-        </span>
-      ))}
-    </section>
-  );
+  return items.map((item) => (
+    <span className="p-6" key={item.slug}>
+      <MenuItemCard imageUrl={item.image} title={item.name} description={item.description} price={item.price} />
+    </span>
+  ));
 };

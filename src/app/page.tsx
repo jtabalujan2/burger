@@ -61,8 +61,8 @@ const items = {
 
 export default function Home() {
   return (
-    <div id="menu-items">
+    <section className="grid grid-cols-4">
       <MenuItemCardList items={items.products} />
-    </div>
+    </section>
   );
 }
