@@ -15,8 +15,6 @@ describe("MenuItemCard", () => {
   test("renders MenuItemCard without image", () => {
     render(<MenuItemCard title="Ketchup" description="Delicious Ketchup" price={1299} />);
 
-    screen.debug();
-
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
     expect(screen.getByText("Ketchup")).toBeInTheDocument();
     expect(screen.getByText("$12.99")).toBeInTheDocument();
