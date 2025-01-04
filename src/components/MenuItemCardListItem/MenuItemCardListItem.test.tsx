@@ -1,10 +1,12 @@
 import { expect, test, describe } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { MenuItemCard } from "@/components/MenuItemCard/MenuItemCard";
+import { MenuItemCardListItem } from "@/components/MenuItemCardListItem/MenuItemCardListItem";
 
-describe("MenuItemCard", () => {
+describe("MenuItemCardListItem", () => {
   test("renders MenuItemCard with all props", () => {
-    render(<MenuItemCard imageUrl="https://example.com/image.jpg" title="Burger" description="Delicious beef burger" price={999} />);
+    render(
+      <MenuItemCardListItem imageUrl="https://example.com/image.jpg" title="Burger" description="Delicious beef burger" price={999} />
+    );
 
     expect(screen.queryByRole("img")).toBeInTheDocument();
     expect(screen.getByText("Burger")).toBeInTheDocument();
@@ -13,7 +15,7 @@ describe("MenuItemCard", () => {
   });
 
   test("renders MenuItemCard without image", () => {
-    render(<MenuItemCard title="Ketchup" description="Delicious Ketchup" price={1299} />);
+    render(<MenuItemCardListItem title="Ketchup" description="Delicious Ketchup" price={1299} />);
 
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
     expect(screen.getByText("Ketchup")).toBeInTheDocument();
