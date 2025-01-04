@@ -13,5 +13,7 @@ export default defineConfig({
       include: ["src/**/*.{js,jsx,ts,tsx}"],
       exclude: [...configDefaults.exclude],
     },
+    setupFiles: ["./src/lib/vitest_setup.ts"],
+    globals: true,
   },
 });
