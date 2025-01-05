@@ -1,4 +1,5 @@
 import { MenuItemCardListItem } from "@/components/MenuItemCardListItem/MenuItemCardListItem";
+import Link from "next/link";
 
 // Move this to an api file later
 interface Product {
@@ -17,8 +18,8 @@ interface MenuItemCardListProps {
 
 export const MenuItemCardList = ({ items }: MenuItemCardListProps) => {
   return items.map((item) => (
-    <span className="p-6" key={item.slug}>
+    <Link className="p-6" key={item.slug} href={`/menu/${item.slug}`}>
       <MenuItemCardListItem imageUrl={item.image} title={item.name} description={item.description} price={item.price} />
-    </span>
+    </Link>
   ));
 };
