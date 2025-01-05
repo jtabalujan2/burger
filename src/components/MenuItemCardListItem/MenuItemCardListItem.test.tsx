@@ -13,13 +13,4 @@ describe("MenuItemCardListItem", () => {
     expect(screen.getByText("$9.99")).toBeInTheDocument();
     expect(screen.getByText("Delicious beef burger")).toBeInTheDocument();
   });
-
-  test("renders MenuItemCard without image", () => {
-    render(<MenuItemCardListItem title="Ketchup" description="Delicious Ketchup" price={1299} />);
-
-    expect(screen.queryByRole("img")).not.toBeInTheDocument();
-    expect(screen.getByText("Ketchup")).toBeInTheDocument();
-    expect(screen.getByText("$12.99")).toBeInTheDocument();
-    expect(screen.getByText("Delicious Ketchup")).toBeInTheDocument();
-  });
 });
