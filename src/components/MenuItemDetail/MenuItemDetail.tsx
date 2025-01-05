@@ -1,8 +1,10 @@
 import { cn } from "@/lib/cn";
 import { getBlurImage } from "@/lib/getBlurImage";
 import { getFormattedPrice } from "@/lib/getFormattedPrice";
-import { Card, CardContent, CardTitle } from "@ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface MenuItemDetailProps {
   image: string;
@@ -21,6 +23,11 @@ export const MenuItemDetail = async (props: MenuItemDetailProps) => {
   return (
     <>
       <Card className={cn("flex flex-col items-center w-full h-full p-6")}>
+        <CardHeader className={cn("flex justify-start w-full")}>
+          <Link href={"/"} className={cn("flex items-center cursor-pointer")}>
+            <ArrowLeft className={cn("mr-4")} /> Go Back
+          </Link>
+        </CardHeader>
         <section className={cn("max-w-2xl")}>
           <Image
             src={image}
