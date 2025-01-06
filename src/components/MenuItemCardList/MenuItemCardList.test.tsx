@@ -1,51 +1,60 @@
-import { render, waitFor } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
 import { MenuItemCardList } from "./MenuItemCardList";
-import { act } from "react";
+import { getBlurImage } from "@/lib/getBlurImage";
+import { Mock } from "vitest";
+
+vi.mock("@/lib/getBlurImage");
+
+const items = [
+  {
+    id: "1",
+    name: "Burger",
+    price: 5.99,
+    image: "/images/burger.jpg",
+    description: "Delicious burger",
+    calorie: 500,
+    slug: "burger",
+  },
+  {
+    id: "2",
+    name: "Fries",
+    price: 2.99,
+    image: "/images/fries.jpg",
+    description: "Crispy fries",
+    calorie: 300,
+    slug: "fries",
+  },
+];
 
 describe("MenuItemCardList", () => {
-  const items = [
-    {
-      id: "1",
-      name: "Burger",
-      price: 5.99,
-      image: "https://fake.com/images/burger.jpg",
-      description: "Delicious beef burger",
-      calorie: 500,
-      slug: "burger",
-    },
-    {
-      id: "2",
-      name: "Fries",
-      price: 2.99,
-      image: "https://fake.com/images/fries.jpg",
-      description: "Crispy french fries",
-      calorie: 300,
-      slug: "fries",
-    },
-  ];
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
 
-  vi.mock("../../utils/getBlurImage", () => ({
-    getBlurImage: vi.fn().mockResolvedValue({ base64: "mockedBlurImage" }),
-  }));
+  it("renders a list of menu items", async () => {
+    (getBlurImage as Mock).mockResolvedValue({ base64: "blurredImage" });
 
-  it("renders correctly with given items", async () => {
-    const { getByText } = await act(() => render(<MenuItemCardList items={items} />));
+    render(<MenuItemCardList items={items} />);
 
-    waitFor(() => {
-      expect(getByText("Burger")).toBeInTheDocument();
-      expect(getByText("Delicious beef burger")).toBeInTheDocument();
-      expect(getByText("Fries")).toBeInTheDocument();
-      expect(getByText("Crispy french fries")).toBeInTheDocument();
+    waitFor(async () => {
+      for (const item of items) {
+        expect(await screen.findByText(item.name)).toBeInTheDocument();
+        expect(await screen.findByText(item.description)).toBeInTheDocument();
+        expect(await screen.findByText(`$${item.price.toFixed(2)}`)).toBeInTheDocument();
+      }
     });
   });
 
-  it("renders the correct number of items", async () => {
-    const { container } = await act(() => render(<MenuItemCardList items={items} />));
+  it("links to the correct menu item page", async () => {
+    (getBlurImage as Mock).mockResolvedValue({ base64: "blurredImage" });
 
-    waitFor(() => {
-      const itemElements = container.querySelectorAll("span.p-6");
-      expect(itemElements.length).toBe(items.length);
+    render(<MenuItemCardList items={items} />);
+
+    waitFor(async () => {
+      for (const item of items) {
+        const link = await screen.findByRole("link", { name: item.name });
+        expect(link).toHaveAttribute("href", `/menu/${item.slug}`);
+      }
     });
   });
 });

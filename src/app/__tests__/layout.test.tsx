@@ -3,12 +3,12 @@ import { render } from "@testing-library/react";
 import RootLayout from "../layout";
 
 describe("RootLayout", () => {
-  it("renders children correctly", () => {
+  it("renders children correctly", async () => {
     const { getByText } = render(
       <RootLayout>
         <div>Test Child</div>
       </RootLayout>
     );
-    expect(getByText("Test Child")).toBeInTheDocument();
+    expect(await getByText("Test Child")).toBeInTheDocument();
   });
 });
