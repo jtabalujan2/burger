@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@ui/c
 import Image from "next/image";
 
 export interface MenuItemCardListItemProps {
-  imageUrl: string;
+  imageUrl?: string;
   title: string;
   description: string;
   price: number;

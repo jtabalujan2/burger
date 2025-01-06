@@ -21,4 +21,23 @@ describe("MenuItemCardListItem", () => {
       expect(screen.getByText("Delicious beef burger")).toBeInTheDocument();
     });
   });
+
+  it("renders MenuItemCard without imageUrl", () => {
+    render(
+      <MenuItemCardListItem
+        title="Burger"
+        description="Delicious beef burger"
+        price={999}
+        blurredImage={"something"}
+        imageUrl={undefined}
+      />
+    );
+
+    waitFor(() => {
+      expect(screen.queryByRole("img")).not.toBeInTheDocument();
+      expect(screen.getByText("Burger")).toBeInTheDocument();
+      expect(screen.getByText("$9.99")).toBeInTheDocument();
+      expect(screen.getByText("Delicious beef burger")).toBeInTheDocument();
+    });
+  });
 });
