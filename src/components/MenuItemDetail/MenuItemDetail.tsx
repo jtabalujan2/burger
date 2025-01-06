@@ -1,5 +1,4 @@
 import { cn } from "@/lib/cn";
-import { getBlurImage } from "@/lib/getBlurImage";
 import { getFormattedPrice } from "@/lib/getFormattedPrice";
 import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
 import { ArrowLeft } from "lucide-react";
@@ -12,13 +11,13 @@ interface MenuItemDetailProps {
   price: number;
   description: string;
   calories: number;
+  blurredImage: string;
 }
 
-export const MenuItemDetail = async (props: MenuItemDetailProps) => {
-  const { image, name, price, description, calories } = props;
+export const MenuItemDetail = (props: MenuItemDetailProps) => {
+  const { image, blurredImage, name, price, description, calories } = props;
 
   const formattedPrice = getFormattedPrice({ price, currency: "USD" });
-  const { base64 } = await getBlurImage(image);
 
   return (
     <>
@@ -34,7 +33,7 @@ export const MenuItemDetail = async (props: MenuItemDetailProps) => {
             alt={name}
             width={500}
             height={200}
-            blurDataURL={base64}
+            blurDataURL={blurredImage}
             placeholder="blur"
             className={cn("rounded-md max-h-96 object-cover w-full")}
           />

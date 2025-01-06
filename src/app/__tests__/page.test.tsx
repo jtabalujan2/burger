@@ -1,18 +1,26 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import Home from "../page";
 import { describe, it, expect } from "vitest";
+import { act } from "react";
 
 describe("Home Page", () => {
-  it("renders without crashing", () => {
-    render(<Home />);
-    expect(screen.getByText("Burger A")).toBeInTheDocument();
+  it("renders without crashing", async () => {
+    await act(() => {
+      render(<Home />);
+    });
+    waitFor(() => {
+      expect(screen.getByText("Burger A")).toBeInTheDocument();
+    });
   });
 
   it("displays all menu items", () => {
     render(<Home />);
     const items = ["Burger A", "Black Burger", "Fries with Ketchup", "Bacon & Egg", "Mushroom", "Chicken Sandwich"];
-    items.forEach((item) => {
-      expect(screen.getByText(item)).toBeInTheDocument();
+
+    waitFor(() => {
+      items.forEach((item) => {
+        expect(screen.getByText(item)).toBeInTheDocument();
+      });
     });
   });
 
@@ -26,8 +34,11 @@ describe("Home Page", () => {
       "Loaded with sautéed mushrooms and Swiss cheese, this burger is a mushroom lover's delight.",
       "A juicy grilled chicken breast topped with lettuce, tomato, and mayo, served on a whole wheat bun.",
     ];
-    descriptions.forEach((description) => {
-      expect(screen.getByText(description)).toBeInTheDocument();
+
+    waitFor(() => {
+      descriptions.forEach((description) => {
+        expect(screen.getByText(description)).toBeInTheDocument();
+      });
     });
   });
 });
