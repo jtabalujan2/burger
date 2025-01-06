@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.mts", "vitest.config.mts"],
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.ts", "vitest.config.mts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
