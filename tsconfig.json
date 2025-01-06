@@ -1,14 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "types": [
-      "vitest/globals"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["vitest/globals"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -26,23 +20,10 @@
       }
     ],
     "paths": {
-      "@ui/*": [
-        "./src/components/ui/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "@ui/*": ["./src/components/ui/*"],
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    "next.config.ts",
-    "vitest.config.ts",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.ts", "vitest.config.mts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
