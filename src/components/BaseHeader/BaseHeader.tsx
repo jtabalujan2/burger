@@ -1,6 +1,11 @@
-import { Input } from "@ui/input";
-import { HomeIcon, SearchIcon, ShoppingCartIcon } from "lucide-react";
+import { HomeIcon, ShoppingCartIcon } from "lucide-react";
 import Link from "next/link";
+import { BaseSearch } from "../BaseSearch/BaseSearch";
+import { items } from "@/lib/mock_data";
+
+const searchList = items.products.map((item) => {
+  return { name: item.name, id: item.id, slug: item.slug };
+});
 
 export const BaseHeader = () => {
   return (
@@ -12,15 +17,8 @@ export const BaseHeader = () => {
         </Link>
       </section>
       <section className="flex justify-between items-center">
-        <div className="flex justify-center items-center pr-4">
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
-                <SearchIcon className="w-4 h-4 text-muted-foreground" />
-              </div>
-              <Input type="search" id="search" placeholder="Search..." className="w-full pl-8 rounded-md bg-muted" />
-            </div>
-          </div>
+        <div className="flex justify-center items-center mr-4">
+          <BaseSearch placeholder="Type to search." searchList={searchList} />
         </div>
         <ShoppingCartIcon />
       </section>
