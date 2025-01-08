@@ -1,11 +1,7 @@
 import { HomeIcon, ShoppingCartIcon } from "lucide-react";
 import Link from "next/link";
-import { BaseSearch } from "../BaseSearch/BaseSearch";
-import { items } from "@/lib/mock_data";
 
-const searchList = items.products.map((item) => {
-  return { name: item.name, id: item.id, slug: item.slug };
-});
+import { BaseHeaderSearch } from "./BaseHeaderSearch";
 
 export const BaseHeader = () => {
   return (
@@ -13,14 +9,14 @@ export const BaseHeader = () => {
       <section className="flex items-center">
         <h1 className="pr-4">BURGER</h1>
         <Link href={"/"}>
-          <HomeIcon />
+          <HomeIcon data-testid="home-icon" />
         </Link>
       </section>
       <section className="flex justify-between items-center">
         <div className="flex justify-center items-center mr-4">
-          <BaseSearch placeholder="Type to search." searchList={searchList} />
+          <BaseHeaderSearch />
         </div>
-        <ShoppingCartIcon />
+        <ShoppingCartIcon data-testid="shopping-cart-icon" />
       </section>
     </div>
   );
