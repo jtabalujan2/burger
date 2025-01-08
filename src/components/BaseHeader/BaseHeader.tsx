@@ -16,7 +16,9 @@ export const BaseHeader = () => {
         <div className="flex justify-center items-center mr-4">
           <BaseHeaderSearch />
         </div>
-        <ShoppingCartIcon data-testid="shopping-cart-icon" />
+        <Link href={"/cart"}>
+          <ShoppingCartIcon data-testid="shopping-cart-icon" />
+        </Link>
       </section>
     </div>
   );
