@@ -22,7 +22,7 @@ export const MenuItemCardList = ({ items }: MenuItemCardListProps) => {
     const { base64 } = await getBlurImage(item.image);
 
     return (
-      <Link className="p-6" key={item.slug} href={`/menu/${item.slug}`}>
+      <Link className="p-6 max-w-" key={item.slug} href={`/menu/${item.slug}`}>
         <MenuItemCardListItem
           imageUrl={item.image}
           title={item.name}
