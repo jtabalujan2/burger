@@ -8,7 +8,7 @@ export const BaseHeaderSearch = () => {
 
   return (
     <aside data-testid="base-header-search">
-      <BaseSearch placeholder="Type to search." searchList={searchList} />;
+      <BaseSearch placeholder="Type to search." searchList={searchList} />
     </aside>
   );
 };
