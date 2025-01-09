@@ -47,7 +47,7 @@ export const MenuItemDetail = (props: MenuItemDetailProps) => {
           </CardContent>
 
           <CardFooter>
-            <CartAddButton item={item} />
+            <CartAddButton item={item} className={cn("w-full flex justify-center")} />
           </CardFooter>
         </section>
       </Card>
