@@ -1,7 +1,8 @@
-import { HomeIcon, ShoppingCartIcon } from "lucide-react";
+import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 
 import { BaseHeaderSearch } from "./BaseHeaderSearch";
+import { BaseHeaderCart } from "./BaseHeaderCart";
 
 export const BaseHeader = () => {
   return (
@@ -17,7 +18,7 @@ export const BaseHeader = () => {
           <BaseHeaderSearch />
         </div>
         <Link href={"/cart"}>
-          <ShoppingCartIcon data-testid="shopping-cart-icon" />
+          <BaseHeaderCart />
         </Link>
       </section>
     </div>

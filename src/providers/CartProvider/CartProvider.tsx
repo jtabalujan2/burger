@@ -38,17 +38,19 @@ interface CartProviderProps {
 }
 
 const getExistingCart = () => {
-  const existingCart = localStorage.getItem("cart");
+  if (typeof window !== "undefined") {
+    const existingCart = localStorage.getItem("cart") ?? null;
 
-  if (existingCart) {
-    return JSON.parse(existingCart);
+    if (existingCart) {
+      return JSON.parse(existingCart);
+    }
   }
 
   return {};
 };
 
-export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const exisitingCart = getExistingCart();
+export const CartProvider = ({ children }: CartProviderProps) => {
+  const exisitingCart = getExistingCart() ?? {};
   const [cart, setCart] = useState<CartState>(exisitingCart);
 
   const addToCart = ({ item }: AddToCartPayload) => {
@@ -80,7 +82,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     localStorage.removeItem("cart");
   };
 
-  const quantity = Object.values(cart).length;
+  const quantity = Object.values(cart).reduce((acc, item) => acc + item.quantity, 0);
 
   return <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, quantity }}>{children}</CartContext.Provider>;
 };
