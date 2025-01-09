@@ -4,12 +4,15 @@ import { MenuItemDetail } from "./MenuItemDetail";
 
 describe("MenuItemDetail", () => {
   const props = {
+    id: "1",
     image: "/test-image.jpg",
     blurredImage: "/test-blurred-image.jpg",
     name: "Test Burger",
     price: 9.99,
     description: "A delicious test burger",
     calories: 500,
+    calorie: 500,
+    slug: "test-burger",
   };
 
   it("renders the menu item details correctly", () => {
@@ -40,5 +43,21 @@ describe("MenuItemDetail", () => {
       expect(image).toHaveAttribute("src", "/test-image.jpg");
       expect(image).toHaveAttribute("alt", "Test Burger");
     });
+  });
+
+  it("renders the add to cart button", () => {
+    render(<MenuItemDetail {...props} />);
+
+    waitFor(() => {
+      const button = screen.findByRole("button", { name: /add to cart/i });
+      expect(button).toBeInTheDocument();
+    });
+  });
+
+  it("navigates to home when Go Back link is clicked", async () => {
+    render(<MenuItemDetail {...props} />);
+
+    const goBackLink = await screen.findByText("Go Back");
+    expect(goBackLink).toHaveAttribute("href", "/");
   });
 });
