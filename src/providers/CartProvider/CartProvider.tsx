@@ -17,7 +17,7 @@ interface AddToCartPayload {
   quantity: number;
 }
 
-interface CartContextProps {
+export interface CartContextProps {
   cart: CartState;
   quantity: number;
   addToCart: (payload: AddToCartPayload) => void;

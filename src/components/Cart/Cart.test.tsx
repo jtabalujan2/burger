@@ -81,7 +81,6 @@ describe("Cart", () => {
 
   it("calls removeFromCart when trash icon is clicked", async () => {
     renderCart();
-    screen.debug();
 
     const trashIcons = await screen.getAllByTestId("empty-icon");
     fireEvent.click(trashIcons[0]);
