@@ -1,4 +1,4 @@
-import { items } from "./mock_data";
+import { items } from "../fixtures/mock_items";
 
 export const getMenuItem = (slug: string) => {
   const menuItem = items.products.find((item) => item.slug === slug);

@@ -1,8 +1,9 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { CartAddButton } from "./CartAddButton";
 import { CartContext } from "@/providers/CartProvider/CartProvider";
-import { Product } from "../MenuItemCardList/MenuItemCardList";
+
 import { vi } from "vitest";
+import { Product } from "@/lib/getMenuItems";
 
 describe("CartAddButton", () => {
   const mockAddToCart = vi.fn();
@@ -22,7 +23,7 @@ describe("CartAddButton", () => {
 
   const renderComponent = () =>
     render(
-      <CartContext.Provider value={{ addToCart: mockAddToCart, cart: {}, quantity: 0 }}>
+      <CartContext.Provider value={{ addToCart: mockAddToCart, cart: {}, quantity: 0, removeFromCart: vi.fn(), clearCart: vi.fn() }}>
         <CartAddButton item={mockProduct} />
       </CartContext.Provider>
     );

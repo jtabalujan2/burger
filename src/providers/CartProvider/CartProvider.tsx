@@ -2,7 +2,7 @@
 
 import { createContext, useState, ReactNode } from "react";
 import { produce } from "immer";
-import { Product } from "@/components/MenuItemCardList/MenuItemCardList";
+import { Product } from "@/lib/getMenuItems";
 
 export interface CartStateValue extends Product {
   quantity: number;

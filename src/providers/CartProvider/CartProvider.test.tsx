@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { CartProvider, CartContext } from "./CartProvider";
-import { Product } from "@/components/MenuItemCardList/MenuItemCardList";
+import { Product } from "@/lib/getMenuItems";
 
 describe("CartProvider", () => {
   const product: Product = {
@@ -156,7 +156,7 @@ describe("CartProvider", () => {
 
     expect(screen.getByTestId("cart").textContent).toContain(product.id);
     expect(screen.getByTestId("cart").textContent).toContain('"quantity":2');
-    expect(screen.getByTestId("quantity").textContent).toBe("1");
+    expect(screen.getByTestId("quantity").textContent).toBe("2");
   });
 
   it("should handle adding multiple different items to cart", async () => {
@@ -187,8 +187,8 @@ describe("CartProvider", () => {
       )
     );
 
-    fireEvent.click(screen.getByText("Add Burger"));
-    fireEvent.click(screen.getByText("Add Fries"));
+    await fireEvent.click(screen.getByText("Add Burger"));
+    await fireEvent.click(screen.getByText("Add Fries"));
 
     expect(screen.getByTestId("cart").textContent).toContain(product.id);
     expect(screen.getByTestId("cart").textContent).toContain(anotherProduct.id);

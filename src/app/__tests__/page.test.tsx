@@ -5,9 +5,8 @@ import { act } from "react";
 
 describe("Home Page", () => {
   it("renders without crashing", async () => {
-    await act(() => {
-      render(<Home />);
-    });
+    render(<Home />);
+
     waitFor(() => {
       expect(screen.getByText("Burger A")).toBeInTheDocument();
     });

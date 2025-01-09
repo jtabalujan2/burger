@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { getMenuItem } from "../getMenuItem";
-import { items } from "../mock_data";
+import { items } from "../../fixtures/mock_items";
 
 describe("getMenuItem", () => {
   it("should return the correct menu item when a valid slug is provided", () => {
