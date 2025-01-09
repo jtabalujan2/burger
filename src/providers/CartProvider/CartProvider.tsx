@@ -19,6 +19,7 @@ interface AddToCartPayload {
 
 interface CartContextProps {
   cart: CartState;
+  quantity: number;
   addToCart: (payload: AddToCartPayload) => void;
   removeFromCart?: (id: string) => void;
   clearCart?: () => void;
@@ -26,6 +27,7 @@ interface CartContextProps {
 
 export const CartContext = createContext<CartContextProps>({
   cart: {},
+  quantity: 0,
   addToCart: () => {},
   removeFromCart: () => {},
   clearCart: () => {},
@@ -73,5 +75,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     );
   };
 
-  return <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>{children}</CartContext.Provider>;
+  const quantity = Object.values(cart).length;
+
+  return <CartContext.Provider value={{ cart, addToCart, removeFromCart, quantity }}>{children}</CartContext.Provider>;
 };
