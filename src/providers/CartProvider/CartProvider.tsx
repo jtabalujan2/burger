@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import { produce } from "immer";
 import { Product } from "@/lib/getMenuItems";
 
@@ -38,20 +38,25 @@ interface CartProviderProps {
 }
 
 const getExistingCart = () => {
-  if (typeof window !== "undefined") {
-    const existingCart = localStorage.getItem("cart") ?? null;
+  const existingCart = localStorage.getItem("cart");
 
-    if (existingCart) {
-      return JSON.parse(existingCart);
-    }
+  if (existingCart) {
+    return JSON.parse(existingCart);
   }
 
-  return {};
+  return null;
 };
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const exisitingCart = getExistingCart() ?? {};
-  const [cart, setCart] = useState<CartState>(exisitingCart);
+  const [cart, setCart] = useState<CartState>({});
+
+  useEffect(() => {
+    const existingCart = getExistingCart();
+
+    if (existingCart) {
+      setCart(existingCart);
+    }
+  }, []);
 
   const addToCart = ({ item }: AddToCartPayload) => {
     setCart(
