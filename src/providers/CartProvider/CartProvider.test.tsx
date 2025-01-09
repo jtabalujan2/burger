@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { CartProvider, CartContext } from "./CartProvider";
 import { Product } from "@/lib/getMenuItems";
 
@@ -190,9 +190,11 @@ describe("CartProvider", () => {
     await fireEvent.click(screen.getByText("Add Burger"));
     await fireEvent.click(screen.getByText("Add Fries"));
 
-    expect(screen.getByTestId("cart").textContent).toContain(product.id);
-    expect(screen.getByTestId("cart").textContent).toContain(anotherProduct.id);
-    expect(screen.getByTestId("quantity").textContent).toBe("2");
+    waitFor(() => {
+      expect(screen.getByTestId("cart").textContent).toContain(product.id);
+      expect(screen.getByTestId("cart").textContent).toContain(anotherProduct.id);
+      expect(screen.getByTestId("quantity").textContent).toBe("2");
+    });
   });
 
   it("should have functions that do nothing on initialization", () => {
