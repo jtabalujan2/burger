@@ -33,4 +33,4 @@ We use `msw` (mock service worker) to handle all incoming and outgoing api calls
 
 ## Vercel
 
-This application is hosted on [Vercel](burger-green.vercel.app)
+This application is hosted on [Vercel](https://burger-green.vercel.app/)
