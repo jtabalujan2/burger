@@ -18,6 +18,7 @@ interface BaseSearchProps {
 
 export const BaseSearch = ({ placeholder, searchList }: BaseSearchProps) => {
   const [search, setSearch] = useState("");
+
   const router = useRouter();
 
   const handleSelect = (slug: string) => {
@@ -28,10 +29,10 @@ export const BaseSearch = ({ placeholder, searchList }: BaseSearchProps) => {
     <div className="relative">
       <Command>
         <CommandInput placeholder={placeholder} value={search} onValueChange={setSearch} />
-        {search && (
+        {search ? (
           <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-white rounded-lg border shadow-lg">
+            <CommandEmpty>No results found.</CommandEmpty>
             <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
               <CommandGroup heading="Suggestions">
                 {searchList?.map((item) => (
                   <CommandItem key={item.slug} onSelect={() => handleSelect(item.slug)} value={item.name}>
@@ -41,7 +42,8 @@ export const BaseSearch = ({ placeholder, searchList }: BaseSearchProps) => {
               </CommandGroup>
             </CommandList>
           </div>
-        )}
+        ) : null}
+        <CommandList />
       </Command>
     </div>
   );
