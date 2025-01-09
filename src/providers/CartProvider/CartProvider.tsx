@@ -75,7 +75,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     );
   };
 
+  const clearCart = () => {
+    setCart({});
+    localStorage.removeItem("cart");
+  };
+
   const quantity = Object.values(cart).length;
 
-  return <CartContext.Provider value={{ cart, addToCart, removeFromCart, quantity }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, quantity }}>{children}</CartContext.Provider>;
 };
