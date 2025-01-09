@@ -1,7 +1,8 @@
-import { HomeIcon, ShoppingCartIcon } from "lucide-react";
+import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 
 import { BaseHeaderSearch } from "./BaseHeaderSearch";
+import { BaseHeaderCart } from "./BaseHeaderCart";
 
 export const BaseHeader = () => {
   return (
@@ -16,7 +17,9 @@ export const BaseHeader = () => {
         <div className="flex justify-center items-center mr-4">
           <BaseHeaderSearch />
         </div>
-        <ShoppingCartIcon data-testid="shopping-cart-icon" />
+        <Link href={"/cart"}>
+          <BaseHeaderCart />
+        </Link>
       </section>
     </div>
   );

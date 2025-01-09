@@ -20,11 +20,13 @@ export default async function MenuItemDetailPage({ params }: MenuItemDetailPageP
 
   return (
     <MenuItemDetail
+      id={menuItem.id}
+      slug={menuItem.slug}
       image={menuItem.image}
       name={menuItem.name}
       price={menuItem.price}
       description={menuItem.description}
-      calories={menuItem.calorie}
+      calorie={menuItem.calorie}
       blurredImage={base64}
     />
   );

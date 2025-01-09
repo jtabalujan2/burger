@@ -1,21 +1,21 @@
 import { cn } from "@/lib/cn";
 import { getFormattedPrice } from "@/lib/getFormattedPrice";
-import { Card, CardContent, CardHeader, CardTitle } from "@ui/card";
+
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@ui/card";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { CartAddButton } from "../CartAddButton/CartAddButton";
+import { Product } from "../MenuItemCardList/MenuItemCardList";
+import { ROUTES } from "@/constants/routes";
 
-interface MenuItemDetailProps {
-  image: string;
-  name: string;
-  price: number;
-  description: string;
-  calories: number;
+export interface MenuItemDetailProps extends Product {
   blurredImage: string;
 }
 
 export const MenuItemDetail = (props: MenuItemDetailProps) => {
-  const { image, blurredImage, name, price, description, calories } = props;
+  const { blurredImage, ...item } = props;
+  const { name, description, image, price, calorie } = item;
 
   const formattedPrice = getFormattedPrice({ price, currency: "USD" });
 
@@ -23,7 +23,7 @@ export const MenuItemDetail = (props: MenuItemDetailProps) => {
     <>
       <Card className={cn("flex flex-col items-center w-full h-full p-6")}>
         <CardHeader className={cn("flex justify-start w-full")}>
-          <Link href={"/"} className={cn("flex items-center cursor-pointer")}>
+          <Link href={ROUTES.HOME} className={cn("flex items-center cursor-pointer")}>
             <ArrowLeft className={cn("mr-4")} /> Go Back
           </Link>
         </CardHeader>
@@ -43,8 +43,12 @@ export const MenuItemDetail = (props: MenuItemDetailProps) => {
               <h4>{formattedPrice}</h4>
               <h4>{description}</h4>
             </section>
-            <h4>Nutrition: {calories} calories</h4>
+            <h4>Nutrition: {calorie} calories</h4>
           </CardContent>
+
+          <CardFooter>
+            <CartAddButton item={item} className={cn("w-full flex justify-center")} />
+          </CardFooter>
         </section>
       </Card>
     </>
