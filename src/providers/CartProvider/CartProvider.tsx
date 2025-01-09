@@ -8,7 +8,7 @@ export interface CartStateValue extends Product {
   quantity: number;
 }
 
-interface CartState {
+export interface CartState {
   [id: string]: CartStateValue;
 }
 

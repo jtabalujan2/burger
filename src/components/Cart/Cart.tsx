@@ -25,7 +25,7 @@ export const Cart = () => {
 
   return (
     <>
-      <Card className="w-full">
+      <Card className="w-full" data-testid="cart-component">
         <CardTitle className="text-3xl text-center p-6">Shopping Cart</CardTitle>
 
         <CardContent className="p-8">
@@ -55,7 +55,11 @@ export const Cart = () => {
 
                     <section className="flex items-center">
                       <h3 className="pr-6 text-xl">{totalPrice}</h3>
-                      <TrashIcon className=" hover:text-red-500 transition-colors hover: cursor-pointer" onClick={handleTrashClick(id)} />
+                      <TrashIcon
+                        className=" hover:text-red-500 transition-colors hover: cursor-pointer"
+                        onClick={handleTrashClick(id)}
+                        data-testid="empty-icon"
+                      />
                     </section>
                   </li>
                 );
