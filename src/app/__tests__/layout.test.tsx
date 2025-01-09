@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import RootLayout from "../layout";
 
 describe("RootLayout", () => {

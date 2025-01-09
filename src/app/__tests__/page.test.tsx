@@ -1,7 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import Home from "../page";
 import { describe, it, expect } from "vitest";
-import { act } from "react";
 
 describe("Home Page", () => {
   it("renders without crashing", async () => {
