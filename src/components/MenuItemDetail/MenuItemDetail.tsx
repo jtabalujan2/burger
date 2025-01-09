@@ -18,7 +18,7 @@ export const MenuItemDetail = (props: MenuItemDetailProps) => {
   const { name, description, image, price, calorie } = item;
 
   const formattedPrice = getFormattedPrice({ price, currency: "USD" });
-  console.dir(item);
+
   return (
     <>
       <Card className={cn("flex flex-col items-center w-full h-full p-6")}>
