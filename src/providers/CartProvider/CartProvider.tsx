@@ -21,8 +21,8 @@ interface CartContextProps {
   cart: CartState;
   quantity: number;
   addToCart: (payload: AddToCartPayload) => void;
-  removeFromCart?: (id: string) => void;
-  clearCart?: () => void;
+  removeFromCart: (id: string) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<CartContextProps>({
