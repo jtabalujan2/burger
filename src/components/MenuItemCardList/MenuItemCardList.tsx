@@ -1,18 +1,8 @@
 import { MenuItemCardListItem } from "@/components/MenuItemCardListItem/MenuItemCardListItem";
 import { ROUTES } from "@/constants/routes";
 import { getBlurImage } from "@/lib/getBlurImage";
+import { Product } from "@/lib/getMenuItems";
 import Link from "next/link";
-
-// Move this to an api file later
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  description: string;
-  calorie: number;
-  slug: string;
-}
 
 interface MenuItemCardListProps {
   items: Product[];

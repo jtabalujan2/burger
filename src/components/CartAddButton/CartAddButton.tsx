@@ -3,8 +3,9 @@
 import { CartContext } from "@/providers/CartProvider/CartProvider";
 import { Button } from "@ui/button";
 import { useContext } from "react";
-import { Product } from "../MenuItemCardList/MenuItemCardList";
+
 import { cn } from "@/lib/cn";
+import { Product } from "@/lib/getMenuItems";
 
 interface CartAddButtonProps {
   item: Product;

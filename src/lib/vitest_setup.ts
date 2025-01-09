@@ -1,5 +1,9 @@
-import { vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
+
+import { beforeAll, vi } from "vitest";
+
+import { server } from "./handlers";
+import { cleanup } from "@testing-library/react";
 
 vi.mock("next/font/google", () => ({
   Geist: () => ({
@@ -16,8 +20,6 @@ vi.mock("next/font/google", () => ({
 
 vi.mock("next/navigation");
 
-import { beforeAll } from "vitest";
-
 beforeAll(() => {
   global.ResizeObserver = class ResizeObserver {
     observe() {
@@ -30,4 +32,18 @@ beforeAll(() => {
       // do nothing
     }
   };
+
+  server.listen({
+    // This tells MSW to throw an error whenever it
+    // encounters a request that doesn't have a
+    // matching request handler.
+    onUnhandledRequest: "error",
+  });
 });
+
+afterEach(() => {
+  server.resetHandlers();
+  cleanup();
+});
+
+afterAll(() => server.close());
