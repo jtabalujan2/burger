@@ -1,6 +1,7 @@
 import { MenuItemCardListItem } from "@/components/MenuItemCardListItem/MenuItemCardListItem";
 import { ROUTES } from "@/constants/routes";
 import { getBlurImage } from "@/lib/getBlurImage";
+import { Product } from "@/lib/getMenuItems";
 import Link from "next/link";
 
 interface MenuItemCardListProps {

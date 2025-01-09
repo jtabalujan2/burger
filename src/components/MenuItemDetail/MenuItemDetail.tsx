@@ -6,8 +6,9 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { CartAddButton } from "../CartAddButton/CartAddButton";
-import { Product } from "../MenuItemCardList/MenuItemCardList";
+
 import { ROUTES } from "@/constants/routes";
+import { Product } from "@/lib/getMenuItems";
 
 export interface MenuItemDetailProps extends Product {
   blurredImage: string;
