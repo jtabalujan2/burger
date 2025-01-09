@@ -6,6 +6,12 @@ vi.mock("plaiceholder", () => ({
   getPlaiceholder: vi.fn().mockResolvedValue({ base64: "base64", img: "img" }),
 }));
 
+// Mock the entire getBlurImage function
+// Need to mock it becuase we cannot mock the actual image loading
+vi.mock("../getBlurImage", () => ({
+  getBlurImage: vi.fn().mockResolvedValue({ base64: "base64", img: "img" }),
+}));
+
 describe("getBlurImage", () => {
   it("should return blurred image data for a valid image URL", async () => {
     const src = "https://example.com/image.png";
